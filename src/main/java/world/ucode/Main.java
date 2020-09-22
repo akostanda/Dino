@@ -21,6 +21,7 @@ public class Main extends Application {
         try {
           Menu menu = new Menu();
           menu.makeMenu(primaryStage);
+          primaryStage.show();
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

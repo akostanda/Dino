@@ -19,7 +19,7 @@ public class NewScene extends Application {
         Dino drex = new Dino(primaryStage, 25, 260);
         root.getChildren().add(drex);
         for (int i = 0; i < 150; i++) {
-            Ground ground = new Ground(x);
+            Ground ground = new Ground(x, 330);
             x += 71;
             root.getChildren().add(ground);
 //        ground.move();

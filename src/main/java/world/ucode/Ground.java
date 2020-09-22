@@ -20,12 +20,12 @@ public class Ground extends Pane {
 //    private static final int OFFSET_X =  1;
 //    private static final int OFFSET_Y =  0;
 //    private int x;
-    private final int y = 330;
+//    private final int y = 330;
 ////    private static final int WIDTH    = 0;
 ////    private static final int HEIGHT   = 0;
     private static Stage primaryStage;
 
-    Ground (int x) {
+    Ground (int x, int y) {
 //        this.primaryStage = primaryStage;
 //        this.x = x;
         Image IMAGE;
