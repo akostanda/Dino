@@ -12,16 +12,51 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class Main extends Application {
-    public static ArrayList<Ground> arrGround = new ArrayList<Ground>();
+    static int xGround = 0;
+    static int groundLanth = 69;
+    static int xCactus = 1210;
+    static int xCloud = 1210;
+    static int yCactus = 400;
+    static int xCactusRandomBegin = 300;
+    static int xCactusRandomEnd = 800;
+    static int yCloud = 30;
+    static int xCloudRandomBegin = 150;
+    static int xCloudRandomEnd = 1000;
+    static int yCloudRandomEnd = 200;
+    static Pane root = new Pane();
+    static int speed = 8;
+    static ArrayList<Ground> arrGroundMenu = new ArrayList<Ground>();
+    static ArrayList<Ground> arrGroundGame = new ArrayList<Ground>();
+    static Deque<Cactus> deqCactus = new LinkedList<Cactus>();
+    static Deque<Cloud> deqCloud = new LinkedList<Cloud>();
     private static final Image IMAGE = new Image("d-rex.jpeg");
     @Override
     public void start(Stage primaryStage) {
         try {
-          Menu menu = new Menu();
-          menu.makeMenu(primaryStage);
-          primaryStage.show();
+            for (int i = 0; i < 150; i++) {
+                new Ground(xGround, 350, "menu");
+                new Ground(xGround, 450, "game");
+                xGround += groundLanth;
+                double number1 = xCactusRandomBegin + Math.random() * xCactusRandomEnd;
+                new Cactus(xCactus, yCactus);
+                double number2 = xCloudRandomBegin + Math.random() * xCloudRandomEnd;
+                double y = yCloud + Math.random() * yCloudRandomEnd;
+                new Cloud(xCloud, (int)y);
+                xCactus += number1;
+                xCloud += number2;
+            }
+            root.getChildren().addAll(arrGroundMenu);
+            Menu menu = new Menu();
+            menu.makeMenu(primaryStage);
+            primaryStage.show();
+//            for (int i = 0; i < 200; i++) {
+//                if (i % 10 == 0)
+//                    speed++;
+//            }
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

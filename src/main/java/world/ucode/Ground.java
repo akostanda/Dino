@@ -23,9 +23,9 @@ public class Ground extends Pane {
 //    private final int y = 330;
 ////    private static final int WIDTH    = 0;
 ////    private static final int HEIGHT   = 0;
-    private static Stage primaryStage;
+//    private static Stage primaryStage;
 
-    Ground (int x, int y) {
+    Ground (int x, int y, String trigger) {
 //        this.primaryStage = primaryStage;
 //        this.x = x;
         Image IMAGE;
@@ -39,15 +39,18 @@ public class Ground extends Pane {
         ImageView imageView = new ImageView(IMAGE);
 //        imageView.setLayoutX(x);
 //        imageView.setLayoutY(y);
-        setTranslateX(x);
-        setTranslateY(y);
+        this.setTranslateX(x);
+        this.setTranslateY(y);
         getChildren().add(imageView);
-        Main.arrGround.add(this);
+        if (trigger.equals("menu"))
+            Main.arrGroundMenu.add(this);
+        else if (trigger.equals("game"))
+            Main.arrGroundGame.add(this);
 //        arrGround = setArrGround();
     }
-    void moveLeft() {
+    void moveLeft(int acceleration) {
 
-        setTranslateX(getTranslateX() - 9);
+        setTranslateX(getTranslateX() - (Main.speed + acceleration));
     }
 //    private ArrayList<ImageView> setArrGround() {
 //        for (int i = 0; i < 20; i++) {

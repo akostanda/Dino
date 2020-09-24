@@ -38,7 +38,7 @@ public class Dino extends Pane {
 
         final Animation animation = new GameAnimation(
                 imageView,
-                Duration.millis(550),
+                Duration.millis(500),
                 COUNT, COLUMNS,
                 OFFSET_X, OFFSET_Y,
                 WIDTH, HEIGHT
