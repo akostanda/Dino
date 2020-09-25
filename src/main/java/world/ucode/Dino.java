@@ -23,9 +23,11 @@ public class Dino extends Pane {
     private static final int WIDTH    = 88;
     private static final int HEIGHT   = 143;
     private static int x;
-    private static int y;
+    static int y;
     private static Stage primaryStage;
-
+    static float vector = 0;
+    static float gravity = 1;
+    boolean toDown = false;
     Dino (Stage primaryStage, int x, int y) {
         this.primaryStage = primaryStage;
         this.x = x;
@@ -49,7 +51,11 @@ public class Dino extends Pane {
         getChildren().add(imageView);
 //        Ground ground = new Ground(primaryStage);
 //        primaryStage.setScene(new Scene(new Group(imageView), 1000, 400));
-        imageView.setLayoutX(x);
-        imageView.setLayoutY(y);
+        setTranslateX(x);
+        setTranslateY(y);
     }
+
+//    static void setY(int newY) {
+//        setTranslateY(newY);
+//    }
 }

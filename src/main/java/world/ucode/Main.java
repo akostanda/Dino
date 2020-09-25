@@ -17,18 +17,19 @@ import java.util.LinkedList;
 
 public class Main extends Application {
     static int xGround = 0;
-    static int groundLanth = 69;
+    static int groundLanth = 66;
     static int xCactus = 1210;
     static int xCloud = 1210;
     static int yCactus = 400;
-    static int xCactusRandomBegin = 300;
+    static int xCactusRandomBegin = 400;
     static int xCactusRandomEnd = 800;
     static int yCloud = 30;
     static int xCloudRandomBegin = 150;
     static int xCloudRandomEnd = 1000;
     static int yCloudRandomEnd = 200;
     static Pane root = new Pane();
-    static int speed = 8;
+    static float speed = 5;
+    static float acceleration = 0;
     static ArrayList<Ground> arrGroundMenu = new ArrayList<Ground>();
     static ArrayList<Ground> arrGroundGame = new ArrayList<Ground>();
     static Deque<Cactus> deqCactus = new LinkedList<Cactus>();
@@ -52,6 +53,12 @@ public class Main extends Application {
             root.getChildren().addAll(arrGroundMenu);
             Menu menu = new Menu();
             menu.makeMenu(primaryStage);
+//           ` if (Score.counter % 100 == 0) {
+//                acceleration++;
+//            }
+//            if (Score.counter % 1000 == 0) {
+//                acceleration = 0;
+//            }`
             primaryStage.show();
 //            for (int i = 0; i < 200; i++) {
 //                if (i % 10 == 0)

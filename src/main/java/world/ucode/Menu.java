@@ -14,13 +14,14 @@ public class Menu {
     Pane root = Main.root;
     public void makeMenu(Stage primaryStage) {
         NewScene scene = new NewScene(Main.groundLanth, 600, 400);
-        scene.creatScene(primaryStage, root, "Beta-Rex )))", "menu");
+
         Button button = new Button();
         button.setText("New game");
         button.setTranslateX(240);
         button.setTranslateY(110);
 
         Dino drex = new Dino(primaryStage, 25, 285);
+        scene.creatScene(primaryStage, root, drex, "Beta-Rex )))", "menu");
         root.getChildren().addAll(drex);
 //        root.getChildren().addAll(Main.deqCloud);
         root.getChildren().add(button);

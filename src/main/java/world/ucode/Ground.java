@@ -48,7 +48,7 @@ public class Ground extends Pane {
             Main.arrGroundGame.add(this);
 //        arrGround = setArrGround();
     }
-    void moveLeft(int acceleration) {
+    void moveLeft(float acceleration) {
 
         setTranslateX(getTranslateX() - (Main.speed + acceleration));
     }

@@ -22,10 +22,12 @@ public class Cactus extends Pane {
         getChildren().add(imageView);
         Main.deqCactus.add(this);
     }
-    void moveLeft(int acceleration) {
+    void moveLeft(float acceleration) {
+
         setTranslateX(getTranslateX() - (Main.speed + acceleration));
     }
-    static void translateCactus(int acceleration) {
+    static void translateCactus(float acceleration) {
+//    System.out.println(acceleration);
         if (Main.deqCactus.getFirst().getTranslateX() < NewScene.screenCloudCactusEnd) {
             double x2 = Main.xCactusRandomBegin + Math.random() * Main.xCactusRandomEnd;
             Main.deqCactus.getFirst().setTranslateX(Main.deqCactus.getLast().getTranslateX() + x2);

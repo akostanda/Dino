@@ -19,9 +19,11 @@ public class NewScene {
     private int height;
     private ArrayList<Ground> arrGround = new ArrayList<Ground>();
     private int screenGroundEnd = -50;
-    static int screenCloudCactusEnd = -150;
+    static int screenCloudCactusEnd = -210;
+//    int acceleration = 0;
     private float gravity = 1;
     private float vector = 0;
+    Scene scene;
 
     NewScene(int x, int width, int height) {
         this.x = x;
@@ -29,38 +31,66 @@ public class NewScene {
         this.height = height;
     }
 //    Pane root = new Pane();
-    protected void creatScene(Stage primaryStage, Pane root, String title, String trigger) {
+    protected void creatScene(Stage primaryStage, Pane root, Dino drex, String title, String trigger) {
         primaryStage.setTitle(title);
-//        root.setStyle("-fx-background-color: #ffffff;");
-        primaryStage.setScene(new Scene(root, width, height));
+        root.setStyle("-fx-background-color: #f7f7f7;");
+        scene = new Scene(root, width, height);
+        primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                update(trigger);
+                update(trigger, drex);
             }
         };
         timer.start();
     }
-    private void update(String trigger) {
-        int acceleration = 0;
+    private void update(String trigger, Dino drex) {
+//        drex.setTranslateY(drex.getTranslateY() - Dino.vector);
+//        Dino.vector -= Dino.gravity;
+//        if (drex.getTranslateY() >= 385) {
+//            Dino.vector = 0;
+//            drex.setTranslateY(385);
+//        }
         if (trigger.equals("menu")) {
             arrGround = Main.arrGroundMenu;
 //            Cactus.translateCactus(acceleration);
 //            Cloud.translateCloud(acceleration);
         }
         else if (trigger.equals("game")) {
+            drex.setTranslateY(drex.getTranslateY() - Dino.vector);
+            Dino.vector -= Dino.gravity;
+            if (drex.getTranslateY() >= 385) {
+                Dino.vector = 0;
+                drex.setTranslateY(385);
+            }
+            if (Score.counter % 1000 == 0) {
+                Main.acceleration = 0;
+                Score.counter += 1;
+            }
+            if (Score.counter % 100 == 0) {
+                Main.acceleration += 1;
+        System.out.println("Accel" + Main.acceleration);
+                Score.counter += 1;
+                System.out.println("Score.counter:" + Score.counter);
+            }
+
             arrGround = Main.arrGroundGame;
-            Cactus.translateCactus(acceleration);
-            Cloud.translateCloud(acceleration);
+            Cactus.translateCactus(Main.acceleration);
+            Cloud.translateCloud(Main.acceleration);
         }
+
         for (int i = 0; i < arrGround.size(); i++) {
+
+//      System.out.println("acceleration:" + Main.acceleration);
+//      System.out.println("Score.counter:" + Score.counter);
+
 //            if (i % 30 == 0)
 //                acceleration++;
 //            if (acceleration == 15)
 //                acceleration = 0;
-            arrGround.get(i).moveLeft(acceleration);
+            arrGround.get(i).moveLeft(Main.acceleration);
             if (arrGround.get(i).getTranslateX() < screenGroundEnd) {
                 arrGround.get(i).setTranslateX(Main.xGround - x);
 //                Main.arrGround.add(Main.arrGround.get(i));

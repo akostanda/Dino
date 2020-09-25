@@ -22,10 +22,10 @@ public class Cloud extends Pane {
         getChildren().add(imageView);
         Main.deqCloud.add(this);
     }
-    void moveLeft(int acceleration) {
-        setTranslateX(getTranslateX() - (Main.speed + acceleration));
+    void moveLeft(float acceleration) {
+        setTranslateX(getTranslateX() - ((Main.speed + acceleration) / 2));
     }
-    static void translateCloud(int acceleration) {
+    static void translateCloud(float acceleration) {
         if (Main.deqCloud.getFirst().getTranslateX() < NewScene.screenCloudCactusEnd) {
             double x2 = Main.xCloudRandomBegin + Math.random() * Main.xCloudRandomEnd;
             double y2 = Main.yCloud + Math.random() * Main.yCloudRandomEnd;
