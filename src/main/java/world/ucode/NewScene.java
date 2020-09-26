@@ -20,10 +20,13 @@ public class NewScene {
     private ArrayList<Ground> arrGround = new ArrayList<Ground>();
     private int screenGroundEnd = -50;
     static int screenCloudCactusEnd = -210;
+
 //    int acceleration = 0;
     private float gravity = 1;
     private float vector = 0;
+
     Scene scene;
+    AnimationTimer timer;
 
     NewScene(int x, int width, int height) {
         this.x = x;
@@ -38,7 +41,7 @@ public class NewScene {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
-        AnimationTimer timer = new AnimationTimer() {
+        timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 update(trigger, drex);
@@ -71,9 +74,21 @@ public class NewScene {
             }
             if (Score.counter % 100 == 0) {
                 Main.acceleration += 1;
-        System.out.println("Accel" + Main.acceleration);
+    System.out.println("Accel" + Main.acceleration); //
                 Score.counter += 1;
-                System.out.println("Score.counter:" + Score.counter);
+//
+    System.out.println("Score.counter:" + Score.counter); //
+            }
+            for (var it : Main.deqCactus) {
+                double xx = Math.pow(((it.getTranslateX() + it.cactusWidth / 2) - (drex.getTranslateX() + 22)), 2);
+                double yy = Math.pow(((it.getTranslateY() + 37) - (drex.getTranslateY() + 71)), 2);
+                double objectsDistance = Math.sqrt(xx + yy);
+                if ((it.getTranslateX() - (drex.getTranslateX() + 88) <= 0)
+                        && (it.getTranslateY() - (drex.getTranslateY() + 71) <= 0)) {
+                    timer.stop();
+                    Dino.animation.stop();
+                    Score.timer.stop();
+                }
             }
 
             arrGround = Main.arrGroundGame;
@@ -97,6 +112,5 @@ public class NewScene {
 //                Main.arrGround.remove(Main.arrGround.get(i));
             }
         }
-
     }
 }

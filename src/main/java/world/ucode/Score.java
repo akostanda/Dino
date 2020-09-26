@@ -13,6 +13,7 @@ public class Score {
     protected Text score = new Text(970, 30, "Score: 00000");
     private int scoreDuration = 70;
     static int counter = 0;
+    static Timeline timer;
 
     public Score(Pane pane) {
         this.root = pane;
@@ -22,7 +23,7 @@ public class Score {
     }
 
     protected void time() {
-        Timeline t = new Timeline(
+        timer = new Timeline(
                 new KeyFrame(Duration.millis(scoreDuration), new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent t) {
                         counter++;
@@ -30,8 +31,8 @@ public class Score {
                     }
                 })
         );
-        t.setCycleCount(Timeline.INDEFINITE);
-        t.play();
+        timer.setCycleCount(Timeline.INDEFINITE);
+        timer.play();
     }
 
 }

@@ -6,17 +6,24 @@ import javafx.scene.layout.Pane;
 
 public class Cactus extends Pane {
     private Image IMAGE;
+    protected  int cactusWidth;
     Cactus (int x, int y) {
         double number = Math.random();
-        if (number <= 0.34)
+        if (number <= 0.34) {
             IMAGE = new Image("cactus1.png");
-        else if (number > 0.34 && number < 0.68)
+            cactusWidth = 46;
+        }
+        else if (number > 0.34 && number < 0.68) {
             IMAGE = new Image("cactus3.png");
-        else
+            cactusWidth = 102;
+        }
+        else {
             IMAGE = new Image("cactus4.png");
+            cactusWidth = 98;
+        }
         ImageView imageView = new ImageView(IMAGE);
         imageView.setFitWidth(IMAGE.getWidth() * 2);
-        imageView.setFitHeight(IMAGE.getHeight() * 1.5);
+        imageView.setFitHeight(74);
         this.setTranslateX(x);
         this.setTranslateY(y);
         getChildren().add(imageView);
