@@ -23,7 +23,7 @@ public class Cloud extends Pane {
         Main.deqCloud.add(this);
     }
     void moveLeft(float acceleration) {
-        setTranslateX(getTranslateX() - ((Main.speed + acceleration) / 2));
+        setTranslateX(getTranslateX() - ((Main.speed + acceleration) / 4));
     }
     static void translateCloud(float acceleration) {
         if (Main.deqCloud.getFirst().getTranslateX() < NewScene.screenCloudCactusEnd) {

@@ -2,6 +2,8 @@ package world.ucode;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
@@ -18,16 +20,22 @@ import javafx.application.Application;
 
 public class NewGame {
     private int x = 0;
-    Pane root = new Pane();
-
-    public void makeGame (Stage primaryStage) {
+    static Pane root = new Pane();
+    private static Stage primaryStage;
+    static Dino drex;
+    static Score score;
+    NewGame(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+    public void makeGame () {
 //        NewScene scene = new NewScene(Main.groundLanth, 1200, 500);
 //        scene.creatScene(primaryStage, root, "Beta-Rex )))", "game");
-        Dino drex = new Dino(primaryStage, 25, 385);
-        Score score = new Score(root);
+        drex = new Dino(25, 385);
+        score = new Score();
         NewScene scene = new NewScene(Main.groundLanth, 1200, 500);
         scene.creatScene(primaryStage, root, drex, "Beta-Rex )))", "game");
         root.getChildren().add(drex);
+        root.getChildren().add(score);
 //        root.getChildren().add(score);
         root.getChildren().addAll(Main.arrGroundGame);
         root.getChildren().addAll(Main.deqCactus);
@@ -68,7 +76,49 @@ public class NewGame {
 //        }
 
     }
-
+    static void gameOver() {
+        Image IMAGE = new Image("replay.png");
+        ImageView imageView = new ImageView(IMAGE);
+        imageView.setFitWidth(150);
+        imageView.setFitHeight(69);
+        Button button = new Button("", imageView);
+        button.setTranslateX(500);
+        button.setTranslateY(40);
+        Image IMAGE2 = new Image("menu.png");
+        ImageView imageView2 = new ImageView(IMAGE2);
+        imageView2.setFitWidth(150);
+        imageView2.setFitHeight(69);
+        Button button2 = new Button("", imageView2);
+        button2.setTranslateX(500);
+        button2.setTranslateY(200);
+//        root.getChildren().addAll(Main.deqCloud);
+        root.getChildren().add(button);
+        root.getChildren().add(button2);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+//                primaryStage.close();
+//                Stage primaryStage2 = new Stage();
+                root.getChildren().removeAll(button, button2, drex, score);
+                root.getChildren().removeAll(Main.deqCloud);
+                root.getChildren().removeAll(Main.deqCactus);
+                root.getChildren().removeAll(Main.arrGroundGame);
+                NewGame newGame = new NewGame(primaryStage);
+                newGame.makeGame();
+            }
+        });
+        button2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                root.getChildren().removeAll(button, button2, drex, score);
+                root.getChildren().removeAll(Main.deqCloud);
+                root.getChildren().removeAll(Main.deqCactus);
+                root.getChildren().removeAll(Main.arrGroundGame);
+                Menu menu = new Menu();
+                menu.makeMenu(primaryStage);
+            }
+        });
+    }
 //    private void creatScene(Stage primaryStage, Pane root) {
 //        primaryStage.setTitle("Beta-Rex )))");
 ////        root.setStyle("-fx-background-color: #ffffff;");

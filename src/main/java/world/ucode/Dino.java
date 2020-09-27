@@ -20,17 +20,15 @@ public class Dino extends Pane {
     private static final int COUNT    =  4;
     private static final int OFFSET_X =  0;
     private static final int OFFSET_Y =  0;
-    private static final int WIDTH    = 88;
-    private static final int HEIGHT   = 142;
+    static final int WIDTH    = 88;
+    static final int HEIGHT   = 142;
     private static int x;
     static int y;
-    private static Stage primaryStage;
     static float vector = 0;
     static float gravity = 1;
     boolean toDown = false;
     static Animation animation;
-    Dino (Stage primaryStage, int x, int y) {
-        this.primaryStage = primaryStage;
+    Dino (int x, int y) {
         this.x = x;
         this.y = y;
     }

@@ -8,17 +8,15 @@ import javafx.animation.KeyFrame;
         import javafx.scene.text.Text;
         import javafx.util.Duration;
 
-public class Score {
-    protected Pane root;
+public class Score extends Pane{
     protected Text score = new Text(970, 30, "Score: 00000");
     private int scoreDuration = 70;
     static int counter = 0;
     static Timeline timer;
 
-    public Score(Pane pane) {
-        this.root = pane;
+    public Score() {
         this.score.setStyle("-fx-font-family: 'Press Start 2P'; -fx-font-size: 24; -fx-text-fill: #53535;");
-        root.getChildren().add(this.score);
+        getChildren().add(this.score);
         this.time();
     }
 

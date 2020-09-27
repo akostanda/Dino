@@ -6,24 +6,28 @@ import javafx.scene.layout.Pane;
 
 public class Cactus extends Pane {
     private Image IMAGE;
-    protected  int cactusWidth;
+    protected  double cactusWidth;
+    protected  static double cactusHeight = 74;
+    protected  double minXtoDino;
+    protected  double minYtoDino;
     Cactus (int x, int y) {
         double number = Math.random();
         if (number <= 0.34) {
             IMAGE = new Image("cactus1.png");
-            cactusWidth = 46;
+            getMaxDinoDistance(cactusWidth);
         }
         else if (number > 0.34 && number < 0.68) {
             IMAGE = new Image("cactus3.png");
-            cactusWidth = 102;
+            getMaxDinoDistance(cactusWidth);
         }
         else {
             IMAGE = new Image("cactus4.png");
-            cactusWidth = 98;
+            getMaxDinoDistance(cactusWidth);
         }
         ImageView imageView = new ImageView(IMAGE);
-        imageView.setFitWidth(IMAGE.getWidth() * 2);
-        imageView.setFitHeight(74);
+        cactusWidth = IMAGE.getWidth() * 2;
+        imageView.setFitWidth(cactusWidth);
+        imageView.setFitHeight(cactusHeight);
         this.setTranslateX(x);
         this.setTranslateY(y);
         getChildren().add(imageView);
@@ -48,5 +52,9 @@ public class Cactus extends Pane {
 //                acceleration = 0;
             it.moveLeft(acceleration);
         }
+    }
+    private void getMaxDinoDistance(double cactusWidth) {
+        minXtoDino = Dino.WIDTH / 2 + cactusWidth / 2;
+        minYtoDino = Dino.HEIGHT / 2 + cactusHeight / 2;
     }
 }

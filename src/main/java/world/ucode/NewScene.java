@@ -80,11 +80,54 @@ public class NewScene {
     System.out.println("Score.counter:" + Score.counter); //
             }
             for (var it : Main.deqCactus) {
-                double xx = Math.pow(((it.getTranslateX() + it.cactusWidth / 2) - (drex.getTranslateX() + 22)), 2);
-                double yy = Math.pow(((it.getTranslateY() + 37) - (drex.getTranslateY() + 71)), 2);
+                double xx = Math.pow(((it.getTranslateX() + it.cactusWidth / 2) - (drex.getTranslateX() + Dino.WIDTH / 2)), 2);
+                double yy = Math.pow(((it.getTranslateY() + it.cactusHeight / 2) - (drex.getTranslateY() + Dino.HEIGHT / 2)), 2);
                 double objectsDistance = Math.sqrt(xx + yy);
-                if ((it.getTranslateX() - (drex.getTranslateX() + 88) <= 0)
-                        && (it.getTranslateY() - (drex.getTranslateY() + 71) <= 0)) {
+//                System.out.println("xx: " + xx);
+//                System.out.println("yy: " + yy);
+
+//        System.out.println("it.getTranslateX(): " + it.getTranslateX());
+//        System.out.println("it.getTranslateY(): " + it.getTranslateY());
+
+
+//                if (objectsDistance < it.minXtoDino && objectsDistance < (it.minYtoDino)) {
+                if ((it.getTranslateX() >= drex.getTranslateX()
+                    && it.getTranslateX() - (drex.getTranslateX() + Dino.WIDTH) <= -10
+                    && it.getTranslateY() - (drex.getTranslateY() + 95) <= -20)) {
+                    System.out.println(1);
+//                    System.out.println("drex.getTranslateX(): " + drex.getTranslateX());
+//                    System.out.println("drex.getTranslateY(): " + (drex.getTranslateY()));
+//                    System.out.println("cactus.getTranslateX(): " + it.getTranslateX());
+//                    System.out.println("cactus.getTranslateY(): " + (it.getTranslateY()));
+//                    System.out.println("it.minXtoDino: " + it.minXtoDino);
+//                    System.out.println("it.minYtoDino: " + (it.minYtoDino));
+//                    System.out.println("objectsDistance: " + objectsDistance);
+                    timer.stop();
+                    Dino.animation.stop();
+                    Score.timer.stop();
+                    NewGame.gameOver();
+
+                }
+                else if ((it.getTranslateX() + it.cactusWidth / 2 >= drex.getTranslateX()
+                        && (it.getTranslateX() + it.cactusWidth / 2) - (drex.getTranslateX() + Dino.WIDTH / 2) <= -5
+                        && it.getTranslateY() - (drex.getTranslateY() + 95) <= -15)) {
+                    System.out.println(2);
+                    timer.stop();
+                    Dino.animation.stop();
+                    Score.timer.stop();
+                }
+                else if ((it.getTranslateX() + it.cactusWidth / 2 < drex.getTranslateX()
+                        && (drex.getTranslateX() + Dino.WIDTH / 2) - (it.getTranslateX() + it.cactusWidth / 2) < -5
+                        && it.getTranslateY() - (drex.getTranslateY() + 95) <= -15)) {
+                    System.out.println(3);
+                    timer.stop();
+                    Dino.animation.stop();
+                    Score.timer.stop();
+                }
+                else if ((it.getTranslateX() < drex.getTranslateX()
+                        && drex.getTranslateX() - (it.getTranslateX() + it.cactusWidth) < -10
+                        && it.getTranslateY() - (drex.getTranslateY() + 95) <= -35)) {
+                    System.out.println(4);
                     timer.stop();
                     Dino.animation.stop();
                     Score.timer.stop();
@@ -113,4 +156,5 @@ public class NewScene {
             }
         }
     }
+
 }
