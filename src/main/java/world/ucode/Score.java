@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -15,7 +16,8 @@ public class Score extends Pane{
     static Timeline timer;
 
     public Score() {
-        this.score.setStyle("-fx-font-family: 'Press Start 2P'; -fx-font-size: 24; -fx-text-fill: #53535;");
+        this.score.setStyle("-fx-font-family: 'Press Start 2P'; -fx-font-size: 24;");
+        this.score.setFill(Color.OLIVE);
         getChildren().add(this.score);
         this.time();
     }

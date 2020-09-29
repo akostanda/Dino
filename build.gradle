@@ -20,4 +20,4 @@ javafx {
 }
 
 
-mainClassName = 'world.ucode.Main'
+mainClassName = 'Dino.main/world.ucode.Main'
