@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 
 public class Cloud extends Pane {
     private Image IMAGE;
+
     Cloud (int x, int y) {
         double number = Math.random();
         if (number <= 0.34)
@@ -22,9 +23,11 @@ public class Cloud extends Pane {
         getChildren().add(imageView);
         Main.deqCloud.add(this);
     }
+
     void moveLeft(float acceleration) {
         setTranslateX(getTranslateX() - ((Main.speed + acceleration) / 4));
     }
+
     static void translateCloud(float acceleration) {
         if (Main.deqCloud.getFirst().getTranslateX() < NewScene.screenCloudCactusEnd) {
             double x2 = Main.xCloudRandomBegin + Math.random() * Main.xCloudRandomEnd;
@@ -35,10 +38,6 @@ public class Cloud extends Pane {
             Main.deqCloud.removeFirst();
         }
         for (var it : Main.deqCloud) {
-//            if (i % 30 == 0)
-//                acceleration++;
-//            if (acceleration == 15)
-//                acceleration = 0;
             it.moveLeft(acceleration);
         }
     }

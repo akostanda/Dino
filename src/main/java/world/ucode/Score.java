@@ -1,12 +1,12 @@
 package world.ucode;
 
 import javafx.animation.KeyFrame;
-        import javafx.animation.Timeline;
-        import javafx.event.ActionEvent;
-        import javafx.event.EventHandler;
-        import javafx.scene.layout.Pane;
-        import javafx.scene.text.Text;
-        import javafx.util.Duration;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class Score extends Pane{
     protected Text score = new Text(970, 30, "Score: 00000");
@@ -32,5 +32,4 @@ public class Score extends Pane{
         timer.setCycleCount(Timeline.INDEFINITE);
         timer.play();
     }
-
 }
